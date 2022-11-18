@@ -9,9 +9,11 @@
             <result property="name" column="name" jdbcType="VARCHAR"/>
             <result property="p" column="p" jdbcType="DOUBLE"/>
             <result property="createDate" column="create_date" jdbcType="TIMESTAMP"/>
+            <result property="createDate" column="create_date" jdbcType="TIMESTAMP"/>
+            <result property="updateDate" column="update_date" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="EnergyType_Column_List">
-        id,name,p,create_date
+        id,name,p,create_date,create_date,update_date
     </sql>
 </mapper>

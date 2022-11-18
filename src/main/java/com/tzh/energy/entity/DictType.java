@@ -8,42 +8,29 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * 
- * @TableName energy_institution
+ * 字典类型
+ * @TableName dict_type
  */
-@TableName(value ="energy_institution")
+@TableName(value ="dict_type")
 @Data
-public class EnergyInstitution implements Serializable {
+public class DictType implements Serializable {
     /**
-     * 
+     * id
      */
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     /**
-     * 
+     * 字典类型
      */
-    @TableField(value = "energy_id")
-    private Integer energyId;
+    @TableField(value = "dict_type")
+    private String dictType;
 
     /**
-     * 
+     * 字典名称
      */
-    @TableField(value = "institution_id")
-    private Integer institutionId;
-
-    /**
-     * 消耗量
-     */
-    @TableField(value = "value")
-    private Double value;
-
-
-    /**
-     * 时间（统计年份）
-     */
-    @TableField(value = "date")
-    private String date;
+    @TableField(value = "dict_name")
+    private String dictName;
 
     /**
      * 创建时间
@@ -52,6 +39,12 @@ public class EnergyInstitution implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private LocalDateTime createDate;
 
+    /**
+     * 更新时间
+     */
+    @TableField(value = "update_date",fill = FieldFill.INSERT_UPDATE)
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    private LocalDateTime updateDate;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

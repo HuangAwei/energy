@@ -17,10 +17,11 @@
             <result property="t" column="t" jdbcType="DOUBLE"/>
             <result property="q" column="q" jdbcType="DOUBLE"/>
             <result property="date" column="date" jdbcType="VARCHAR"/>
+            <result property="createDate" column="create_date" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="EnergyConsumption_Column_List">
-        id,institution_id,e,emz,emd,erz,m,md,n,t,q,'date'
+        id,institution_id,e,emz,emd,erz,m,md,n,t,q,'date',create_date
     </sql>
     <select id="getHistory" resultType="java.util.Map">
         SELECT a.*,b.name

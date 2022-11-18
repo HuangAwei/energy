@@ -1,12 +1,11 @@
 package com.tzh.energy.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * 
@@ -86,6 +85,13 @@ public class EnergyConsumption implements Serializable {
      */
     @TableField(value = "date")
     private String date;
+
+    /**
+     * 创建时间
+     */
+    @TableField(value = "create_date",fill = FieldFill.INSERT)
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    private LocalDateTime createDate;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

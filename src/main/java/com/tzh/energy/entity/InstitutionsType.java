@@ -51,6 +51,13 @@ public class InstitutionsType implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private LocalDateTime createDate;
 
+    /**
+     * 更新时间
+     */
+    @TableField(value = "update_date",fill = FieldFill.INSERT_UPDATE)
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    private LocalDateTime updateDate;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 }

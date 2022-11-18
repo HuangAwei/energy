@@ -13,12 +13,14 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
         this.setFieldValByName("createDate",LocalDateTime.now(),metaObject);
+        this.setFieldValByName("updateDate",LocalDateTime.now(),metaObject);
+
     }
 
     //使用mp进行修改操作这个方法执行
     @Override
     public void updateFill(MetaObject metaObject) {
-        this.setFieldValByName("updateData",LocalDateTime.now(),metaObject);
+        this.setFieldValByName("updateDate",LocalDateTime.now(),metaObject);
     }
 }
 

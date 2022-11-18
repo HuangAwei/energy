@@ -13,7 +13,6 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,coefficient,name,
-        create_date,R
+        id,coefficient,name,create_date,R
     </sql>
 </mapper>

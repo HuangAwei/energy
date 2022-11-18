@@ -2,17 +2,17 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tzh.energy.mapper.InstitutionsMapper">
+<mapper namespace="com.tzh.energy.mapper.DeptMapper">
 
-    <resultMap id="Institutions" type="com.tzh.energy.entity.Institutions">
+    <resultMap id="BaseResultMap" type="com.tzh.energy.entity.Dept">
             <id property="id" column="id" jdbcType="INTEGER"/>
-            <result property="type" column="type" jdbcType="INTEGER"/>
+            <result property="pid" column="pid" jdbcType="INTEGER"/>
             <result property="name" column="name" jdbcType="VARCHAR"/>
             <result property="createDate" column="create_date" jdbcType="TIMESTAMP"/>
             <result property="updateDate" column="update_date" jdbcType="TIMESTAMP"/>
     </resultMap>
 
-    <sql id="Institutions_Column_List">
-        id,type,name,create_date,update_date
+    <sql id="Base_Column_List">
+        id,pid,name,create_date,update_date
     </sql>
 </mapper>

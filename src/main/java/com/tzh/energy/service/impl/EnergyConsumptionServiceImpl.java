@@ -90,7 +90,7 @@ public class EnergyConsumptionServiceImpl implements EnergyConsumptionService {
         if (params.containsKey("size") && params.get("size") != ""){
             size = Integer.parseInt((String) params.get("size"));
         }
-        if (params.containsKey("name") && params.get("current") != ""){
+        if (params.containsKey("name") && params.get("name") != ""){
             name = "%" + params.get("name") + "%";
         }
         Page<Map<String,Object>> page = new Page<>(current, size);

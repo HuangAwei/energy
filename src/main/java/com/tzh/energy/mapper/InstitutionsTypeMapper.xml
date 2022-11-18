@@ -11,9 +11,10 @@
             <result property="s0" column="S0" jdbcType="INTEGER"/>
             <result property="q0" column="Q0" jdbcType="INTEGER"/>
             <result property="createDate" column="create_date" jdbcType="TIMESTAMP"/>
+            <result property="updateDate" column="update_date" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="InstitutionsType_Column_List">
-        id,name,T0,S0,Q0,create_date
+        id,name,T0,S0,Q0,create_date,update_date
     </sql>
 </mapper>

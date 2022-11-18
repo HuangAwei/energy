@@ -10,10 +10,11 @@
             <result property="institutionId" column="institution_id" jdbcType="INTEGER"/>
             <result property="value" column="value" jdbcType="DOUBLE"/>
             <result property="date" column="date" jdbcType="VARCHAR"/>
+            <result property="createDate" column="create_date" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="EnergyInstitution_Column_List">
-        id,energy_id,institution_id,'value','date'
+        id,energy_id,institution_id,'value','date',create_date
     </sql>
 
     <select id="existHistory" resultType="int">
