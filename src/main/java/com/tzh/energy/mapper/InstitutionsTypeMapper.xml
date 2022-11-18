@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tzh.energy.mapper.InstitutionsTypeMapper">
+
+    <resultMap id="InstitutionsType" type="com.tzh.energy.entity.InstitutionsType">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="t0" column="T0" jdbcType="INTEGER"/>
+            <result property="s0" column="S0" jdbcType="INTEGER"/>
+            <result property="q0" column="Q0" jdbcType="INTEGER"/>
+            <result property="createDate" column="create_date" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="InstitutionsType_Column_List">
+        id,name,T0,S0,Q0,create_date
+    </sql>
+</mapper>

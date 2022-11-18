@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tzh.energy.mapper.EnergyTypeMapper">
+
+    <resultMap id="EnergyType" type="com.tzh.energy.entity.EnergyType">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="p" column="p" jdbcType="DOUBLE"/>
+            <result property="createDate" column="create_date" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="EnergyType_Column_List">
+        id,name,p,create_date
+    </sql>
+</mapper>

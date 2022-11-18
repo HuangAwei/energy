@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tzh.energy.mapper.EnergyConsumptionMapper">
+
+    <resultMap id="EnergyConsumption" type="com.tzh.energy.entity.EnergyConsumption">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="institutionId" column="institution_id" jdbcType="INTEGER"/>
+            <result property="e" column="e" jdbcType="DOUBLE"/>
+            <result property="emz" column="emz" jdbcType="DOUBLE"/>
+            <result property="emd" column="emd" jdbcType="DOUBLE"/>
+            <result property="erz" column="erz" jdbcType="DOUBLE"/>
+            <result property="m" column="m" jdbcType="DOUBLE"/>
+            <result property="ed" column="ed" jdbcType="DOUBLE"/>
+            <result property="n" column="n" jdbcType="INTEGER"/>
+            <result property="t" column="t" jdbcType="DOUBLE"/>
+            <result property="q" column="q" jdbcType="DOUBLE"/>
+            <result property="date" column="date" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="EnergyConsumption_Column_List">
+        id,institution_id,e,emz,emd,erz,m,md,n,t,q,'date'
+    </sql>
+    <select id="getHistory" resultType="java.util.Map">
+        SELECT a.*,b.name
+        FROM energy_consumption a LEFT JOIN institutions b ON a.institution_id = b.id
+        <where>
+            <if test="name!=null and name!=''">
+               AND b.name LIKE #{name}
+            </if>
+            <if test="date!=null and date!=''">
+               AND a.date = #{date}
+            </if>
+        </where>
+        ORDER BY a.date
+    </select>
+</mapper>

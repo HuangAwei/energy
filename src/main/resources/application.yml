@@ -1,0 +1,20 @@
+# 应用名称
+spring:
+  application:
+    name: energy
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/tzh?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&nullCatalogMeansCurrent=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+# 应用服务 WEB 访问端口
+server:
+  port: 8888
+
+#mybatis
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations:
+    - com/tzh/energy/mapper/*.xml

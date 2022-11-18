@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tzh.energy.mapper.EnergyInstitutionMapper">
+
+    <resultMap id="EnergyInstitution" type="com.tzh.energy.entity.EnergyInstitution">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="energyId" column="energy_id" jdbcType="INTEGER"/>
+            <result property="institutionId" column="institution_id" jdbcType="INTEGER"/>
+            <result property="value" column="value" jdbcType="DOUBLE"/>
+            <result property="date" column="date" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="EnergyInstitution_Column_List">
+        id,energy_id,institution_id,'value','date'
+    </sql>
+
+    <select id="existHistory" resultType="int">
+        SELECT COUNT(*) FROM energy_institution WHERE institution_id = #{id} AND date =  #{year}
+    </select>
+
+    <select id="getEnergyByInstitutionId" resultType="java.util.Map">
+        SELECT b.name name,a.value value
+        FROM energy_institution a LEFT JOIN energy_type b ON a.energy_id = b.id
+        WHERE a.institution_id = #{institutionId}
+        AND a.date = #{date}
+    </select>
+</mapper>
