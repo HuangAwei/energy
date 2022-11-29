@@ -1,7 +1,11 @@
 package com.tzh.energy.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.tzh.energy.entity.DictData;
+import com.tzh.energy.entity.DictType;
+
+import java.util.Map;
 
 /**
 * @author hw
@@ -10,4 +14,5 @@ import com.tzh.energy.entity.DictData;
 */
 public interface DictDataService extends IService<DictData> {
 
+    Page<DictData> dataPage(Map<String, Object> params);
 }

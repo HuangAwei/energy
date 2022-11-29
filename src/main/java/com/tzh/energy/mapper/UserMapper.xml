@@ -27,4 +27,20 @@
         super_admin,status,create_date,
         update_date
     </sql>
+
+    <select id="userPage" resultType="java.util.Map">
+        SELECT a.*,a.real_name realName,b.name deptName,(CASE a.gender WHEN 0 THEN '男' WHEN 1 THEN '女' ELSE '保密' END) genderDesc,(CASE a.status WHEN 0 THEN '停用' ELSE '正常' END) statusDesc
+        FROM user a LEFT JOIN dept b ON a.dept_id = b.id
+        <where>
+            <if test="realName!=null and realName!=''">
+                AND a.real_name LIKE #{realName}
+            </if>
+            <if test="gender!=null and gender!=''">
+                AND a.gender = #{gender}
+            </if>
+            <if test="deptId!=null and deptId!=''">
+                AND a.dept_id = #{deptId}
+            </if>
+        </where>
+    </select>
 </mapper>

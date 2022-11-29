@@ -13,7 +13,7 @@ import java.util.Map;
 */
 public interface UserService extends IService<User> {
 
-    Page<User> userPage(Map<String, Object> params);
+    Page<Map<String, Object>> userPage(Map<String, Object> params);
 
-    boolean existUserName(String username);
+    boolean existUserName(String username,Integer id);
 }

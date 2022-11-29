@@ -34,8 +34,8 @@ public class UserController {
             @ApiImplicitParam(name = "gender", value = "性别", paramType = "query", dataType="String"),
             @ApiImplicitParam(name = "deptId", value = "部门ID", paramType = "query", dataType="String")
     })
-    public Result<Page<User>> page(@ApiIgnore @RequestParam Map<String, Object> params){
-        Page<User> userPage = userService.userPage(params);
+    public Result<Page<Map<String, Object>>> page(@ApiIgnore @RequestParam Map<String, Object> params){
+        Page<Map<String, Object>> userPage = userService.userPage(params);
         return Result.success().data(userPage);
     }
 
@@ -44,8 +44,10 @@ public class UserController {
     public Result save(@RequestBody User user) {
         boolean save = false;
         String message = "";
-        user.setPassword(MD5Utils.getMD5(user.getPassword()));
-        if (userService.existUserName(user.getUsername())){
+        if (user.getPassword() != null && user.getPassword() != ""){
+            user.setPassword(MD5Utils.getMD5(user.getPassword()));
+        }
+        if (userService.existUserName(user.getUsername(),user.getId())){
             message = "用户名已存在";
         }else if (user.getId() != null){
             save = userService.updateById(user);

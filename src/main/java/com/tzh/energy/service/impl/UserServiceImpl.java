@@ -8,6 +8,8 @@ import com.tzh.energy.mapper.UserMapper;
 import com.tzh.energy.service.UserService;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,8 +20,11 @@ import java.util.Map;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
+    @Resource
+    public UserMapper userMapper;
+
     @Override
-    public Page<User> userPage(Map<String, Object> params) {
+    public Page<Map<String, Object>> userPage(Map<String, Object> params) {
         int current = 1, size = 10;
         String realName = null;
         if (params.containsKey("current") && params.get("current") != ""){
@@ -28,26 +33,31 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         if (params.containsKey("size") && params.get("size") != ""){
             size = Integer.parseInt((String) params.get("size"));
         }
-        QueryWrapper<User> wrapper = new QueryWrapper<>();
+//        QueryWrapper<User> wrapper = new QueryWrapper<>();
         if (params.containsKey("realName") && params.get("current") != ""){
             realName = "%" + params.get("realName") + "%";
-            wrapper.like("real_name",realName);
+//            wrapper.like("real_name",realName);
         }
-        if (params.containsKey("gender") && params.get("gender") != ""){
-            wrapper.eq("gender",params.get("gender"));
-        }
-        if (params.containsKey("deptId") && params.get("deptId") != ""){
-            wrapper.eq("dept_id",params.get("deptId"));
-        }
-        Page<User> page = new Page<>(current, size);
-        page = this.page(page,wrapper);
+//        if (params.containsKey("gender") && params.get("gender") != ""){
+//            wrapper.eq("gender",params.get("gender"));
+//        }
+//        if (params.containsKey("deptId") && params.get("deptId") != ""){
+//            wrapper.eq("dept_id",params.get("deptId"));
+//        }
+        Page<Map<String, Object>> page = new Page<>(current, size);
+//        page = this.page(page,wrapper);
+        List<Map<String, Object>> maps = userMapper.userPage(page, (String) params.get("realName"), (String) params.get("gender"), (String) params.get("deptId"));
+        page.setRecords(maps);
         return page;
     }
 
     @Override
-    public boolean existUserName(String username) {
+    public boolean existUserName(String username, Integer id) {
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         wrapper.eq("username", username);
+        if (id != null ){
+            wrapper.ne("id", id);
+        }
         return this.count(wrapper) > 0;
     }
 }

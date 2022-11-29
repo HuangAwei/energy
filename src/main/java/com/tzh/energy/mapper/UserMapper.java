@@ -1,8 +1,13 @@
 package com.tzh.energy.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tzh.energy.entity.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+import java.util.Map;
 
 /**
 * @author hw
@@ -12,7 +17,7 @@ import org.apache.ibatis.annotations.Mapper;
 */
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
-
+    List<Map<String, Object>> userPage(@Param("page") Page page,@Param("realName") String realName,@Param("gender") String gender,@Param("deptId") String deptId);
 }
 
 

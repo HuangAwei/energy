@@ -48,5 +48,11 @@ public class Dept extends TreeNode implements Serializable {
     private LocalDateTime updateDate;
 
     @TableField(exist = false)
+    private Integer value;
+
+    @TableField(exist = false)
+    private String label;
+
+    @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 }

@@ -19,7 +19,12 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements De
 
     @Override
     public List<Dept> deptList() {
-        return TreeUtils.build(this.list());
+        List<Dept> list = this.list();
+        list.forEach(item -> {
+            item.setValue(item.getId());
+            item.setLabel(item.getName());
+        });
+        return TreeUtils.build(list);
     }
 }
 
