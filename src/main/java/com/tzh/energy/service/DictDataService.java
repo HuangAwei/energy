@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.tzh.energy.entity.DictData;
 import com.tzh.energy.entity.DictType;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,4 +16,6 @@ import java.util.Map;
 public interface DictDataService extends IService<DictData> {
 
     Page<DictData> dataPage(Map<String, Object> params);
+
+    List<DictData> typeList();
 }

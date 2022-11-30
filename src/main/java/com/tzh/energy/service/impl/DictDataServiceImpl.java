@@ -10,6 +10,7 @@ import com.tzh.energy.mapper.DictDataMapper;
 import com.tzh.energy.service.DictDataService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -37,6 +38,13 @@ public class DictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData> i
         Page<DictData> page = new Page<>(current, size);
         page = this.page(page,wrapper);
         return page;
+    }
+
+    @Override
+    public List<DictData> typeList() {
+        QueryWrapper<DictData> wrapper = new QueryWrapper<>();
+        wrapper.eq("dict_type","device");
+        return this.list(wrapper);
     }
 }
 

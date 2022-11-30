@@ -34,7 +34,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             size = Integer.parseInt((String) params.get("size"));
         }
 //        QueryWrapper<User> wrapper = new QueryWrapper<>();
-        if (params.containsKey("realName") && params.get("current") != ""){
+        if (params.containsKey("realName") && params.get("realName") != ""){
             realName = "%" + params.get("realName") + "%";
 //            wrapper.like("real_name",realName);
         }
@@ -46,7 +46,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 //        }
         Page<Map<String, Object>> page = new Page<>(current, size);
 //        page = this.page(page,wrapper);
-        List<Map<String, Object>> maps = userMapper.userPage(page, (String) params.get("realName"), (String) params.get("gender"), (String) params.get("deptId"));
+        List<Map<String, Object>> maps = userMapper.userPage(page, realName, (String) params.get("gender"), (String) params.get("deptId"));
         page.setRecords(maps);
         return page;
     }

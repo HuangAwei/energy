@@ -28,7 +28,7 @@ public class InstitutionsServiceImpl extends ServiceImpl<InstitutionsMapper, Ins
         if (params.containsKey("current") && params.get("current") != ""){
             current = Integer.parseInt((String) params.get("current"));
         }
-        if (params.containsKey("size") && params.get("size") != "size"){
+        if (params.containsKey("size") && params.get("size") != ""){
             size = Integer.parseInt((String) params.get("size"));
         }
         QueryWrapper<Institutions> wrapper = new QueryWrapper<>();
